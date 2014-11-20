@@ -12,4 +12,12 @@ class ChatController < WebsocketRails::BaseController
 	def user_disconnected
 		p 'user disconnected'
 	end
+	
+	def authorize_channel
+		if current_user
+			accept_channel current_user.email
+		else
+			deny_channel({ msg: 'Authorization failed!' })
+		end
+	end
 end

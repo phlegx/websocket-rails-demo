@@ -53,7 +53,11 @@ class @ChatApp
     e.preventDefault()
     @dispatcher.unsubscribe(@currentChannel.name) if @currentChannel?
 
-    channelName = $(e.target).html()
+    channelName = $(e.target).data('chan')
+    if channelName == 'test'
+      @currentChannel = @dispatcher.subscribe_private(channelName)
+    else
+      @currentChannel = @dispatcher.subscribe(channelName)
     @currentChannel = @dispatcher.subscribe(channelName)
     @currentChannel.bind 'new_message', @receiveMessage
     $('#chat_history').append @joinTemplate(channelName)

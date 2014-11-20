@@ -36,6 +36,7 @@
             %ul.nav.nav-list
               %li.nav-header Channels
               %li
+              %li= link_to "Private (test)", "#", :data => {:chan => "test"}, :class => "join_chan"
               %li= link_to "Public", "#", :data => {:chan => "public"}, :class => "join_chan"
               %li= link_to "Support", "#", :data => {:chan => "support"}, :class => "join_chan"
               %li= link_to "Development", "#", :data => {:chan => "development"}, :class => "join_chan"
